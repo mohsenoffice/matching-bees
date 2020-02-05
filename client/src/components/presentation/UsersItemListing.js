@@ -13,9 +13,11 @@ class UsersItemListing extends Component {
 }
 
 UsersItemListing.propTypes = {
-    id: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired,
-    mail: PropTypes.string.isRequired
+    data: PropTypes.shape({
+        id: PropTypes.string.isRequired,
+        name: PropTypes.string.isRequired,
+        mail: PropTypes.string.isRequired
+    })
 };
 
 export default UsersItemListing;
