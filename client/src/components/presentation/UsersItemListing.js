@@ -6,8 +6,10 @@ class UsersItemListing extends Component {
     render() {
         return (
             <div>
-                <div><Link to={`/users/${this.props.data.name}`}><b>{this.props.data.mail}</b></Link></div>
+                <div><Link to={`/users/${this.props.data.id}`}><b>{this.props.data.mail}</b></Link></div>
+                <div>{this.props.data.id}</div>
                 <div>{this.props.data.name}</div>
+
 
                 
             </div>

@@ -8,24 +8,18 @@ class UsersArticle extends Component {
 
     componentDidMount(){
 
-        var fakeUsersItem = {
-            id: '1',
-            name: 'fake',
-            mail: 'fake@fake.com',
-            body: `wawwwwwww hdkjshdklasjdh kasjhd kjas hdkjashd `
-        };
-        
-        this.props.dispatch(fetchUsersItem(fakeUsersItem));
+        this.props.dispatch(fetchUsersItem(this.props.match.params.id));
     }
 
     render(){
         let { usersItem } = this.props; 
-
+alert(usersItem.id);
         return (
             <div>
                 <h2>Users Story</h2>
                 <ul>
-                    { usersItem ? <UsersItemDetail data={usersItem} /> : null}
+                <UsersItemDetail data={this.props.usersItem} />
+                
                 </ul>
             </div>
         )
