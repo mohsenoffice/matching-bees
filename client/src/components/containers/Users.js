@@ -5,19 +5,8 @@ import { fetchUsers } from '../../actions/actions'
 
 class Users extends Component {
     componentDidMount(){
-        
-                var fakeUsers = [{
-                    id: '1',
-                    name: 'Mohsen1',
-                    mail: 'mohsen1@mohsen.com'
-                }, {
-                    id: '2',
-                    name: 'Mohsen2',
-                    mail: 'mohsen2@mohsen.com'
-                }];
-                
-                this.props.dispatch(fetchUsers(fakeUsers));
-            }
+        this.props.dispatch(fetchUsers());
+    }
 
     render(){
 
@@ -35,6 +24,7 @@ class Users extends Component {
         )
     }
 }
+
 
 const mapStateToProps = state => {
     return {

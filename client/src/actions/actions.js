@@ -14,15 +14,23 @@ function usersReceived(users){
     }
 }
 
-export function fetchUsers(fakeUsers){
-    console.log('presend')
+
+
+export function fetchUsers(){
     return dispatch => {
-        dispatch(usersReceived(fakeUsers));
-    }
+        return fetch(`/users`)
+        .then( (response) => response.json() )
+        .then( (data) => dispatch(usersReceived(data.data)))
+        .catch( (e) => console.log(e) );
+    }    
 }
 
-export function fetchUsersItem(fakeUsersItem){
+export function fetchUsersItem(id){
+    console.log(id);
     return dispatch => {
-        dispatch(usersItemReceived(fakeUsersItem));
-    }
+        return fetch(`/users/${id}`)
+        .then( (response) => response.json() )
+        .then( (data) => dispatch(usersItemReceived(data.data)))
+        .catch( (e) => console.log(e) );
+    }   
 }
