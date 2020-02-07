@@ -1,9 +1,26 @@
-import React, {Component} from 'react'
+import React, { Component} from 'react';
 import UsersItemListing from '../presentation/UsersItemListing';
 import { connect } from 'react-redux'
+import { fetchUsers } from '../../actions/actions'
 
 class Users extends Component {
-    render() {
+    componentDidMount(){
+        
+                var fakeUsers = [{
+                    id: '1',
+                    name: 'Mohsen1',
+                    mail: 'mohsen1@mohsen.com'
+                }, {
+                    id: '2',
+                    name: 'Mohsen2',
+                    mail: 'mohsen2@mohsen.com'
+                }];
+                
+                this.props.dispatch(fetchUsers(fakeUsers));
+            }
+
+    render(){
+
         const usersItems = this.props.users.map( (users, i) => {
             return ( <li key={i}><UsersItemListing data = {users} /></li> );
         });
@@ -12,7 +29,7 @@ class Users extends Component {
             <div>
                 <h2>Users Items</h2>
                 <ul>
-                    {usersItems}
+                {(this.props.users.length > 0) ? <ul>{usersItems}</ul> : <div>Sorry we have no users</div>}
                 </ul>
             </div>
         )
