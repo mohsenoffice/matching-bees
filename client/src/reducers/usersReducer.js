@@ -1,7 +1,8 @@
 import constants from '../constants/actionTypes'
 
 var initialState = {
-  users: []
+  users: [],
+  usersItem: {}
 }
 
 export default (state = initialState, action) => {
@@ -12,6 +13,10 @@ export default (state = initialState, action) => {
 
     case constants.USERS_RECEIVED:
       updated['users'] = action.users
+      return updated
+
+    case constants.USERSITEM_RECEIVED:
+      updated['usersItem'] = action.usersItem
       return updated
 
     default:

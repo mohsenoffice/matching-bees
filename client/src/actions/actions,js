@@ -1,8 +1,0 @@
-import actionTypes from '../constants/actionTypes';
-
-function usersReceived(users){
-    return {
-        type: actionTypes.USERS_RECEIVED,
-        users: users
-    }
-}
