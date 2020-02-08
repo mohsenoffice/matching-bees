@@ -1,5 +1,6 @@
 const express = require('express')
 const router = express.Router()
+const usersController = require('../controllers/usersController')
 
 const fakeUsers = [{
     id: '1',
@@ -28,20 +29,59 @@ const fakeUsers = [{
 }];
 
 router.get('/', function(req, res, next) {
-    res.status(200).send({
-      data: fakeUsers
-    })
-})
+    usersController.find(req.query, function(err, results){
+        if(err){
+            console.log(err);
+            res.json({
+                success: 0,
+                error: err
+            });
+            return;
+        }
+        res.json({
+            success: 1,
+            data: results
+        });
+    });
+});
 
 router.get('/:id', function(req, res, next){
-    const id = req.params.id
+    const id = req.params.id;
+    
+        usersController.findById(id, function(err, result){
+        
+            if(err){
+                console.log(err);
+                res.status(500).json({
+                    success: 0,
+                    data: result
+                });
+                return;
+            }
+            res.status(200).json({
+                success: 1,
+                data: result
+            });
+        });
 
-    const picked = fakeUsers.find(o => o.id === id);
+});
 
-    res.status(200).send({
-        data: picked
-    })
+router.post('/', function(req, res, next) {
+    usersController.create(req.body, function(err, result){
+        if(err){  
+            console.log(err);
+            res.json({
+                success: 0,
+                error: err
+            })
+            return;
+        }
 
-})
+        res.json({
+            success: 1,
+            data: result
+        });
+    });
+});
 
 module.exports = router

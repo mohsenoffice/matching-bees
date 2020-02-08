@@ -8,7 +8,7 @@ class UserActionButtons extends Component {
       <div class="text-center">
         <Button variant="danger mx-1">Delete</Button>
         <Button variant="success mx-1">Update</Button>
-        <Button variant="primary mx-1">Create</Button>
+        <Button variant="primary mx-1" >Create</Button>
       </div>
   )}
 }
