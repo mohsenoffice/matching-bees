@@ -22,15 +22,14 @@ export function fetchUsers(){
         .then( (response) => response.json() )
         .then( (data) => dispatch(usersReceived(data.data)))
         .catch( (e) => console.log(e) );
-    }    
+    }
 }
 
 export function fetchUsersItem(id){
-    console.log(id);
     return dispatch => {
         return fetch(`/users/${id}`)
         .then( (response) => response.json() )
         .then( (data) => dispatch(usersItemReceived(data.data)))
         .catch( (e) => console.log(e) );
-    }   
+    }
 }

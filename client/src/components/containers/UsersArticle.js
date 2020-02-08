@@ -1,7 +1,9 @@
 import React, { Component} from 'react';
 import UsersItemDetail from '../presentation/UsersItemDetail';
+import CreateEditUser from '../presentation/CreateEditUser';
 import { connect } from 'react-redux'
 import { fetchUsersItem } from '../../actions/actions'
+import Button from 'react-bootstrap/Button';
 
 class UsersArticle extends Component {
 
@@ -12,14 +14,11 @@ class UsersArticle extends Component {
     }
 
     render(){
-        let { usersItem } = this.props; 
-alert(usersItem.id);
         return (
             <div>
-                <h2>Users Story</h2>
+               <Button variant="success mx-1" onClick={event =>  window.location.href='/'}>back</Button>
                 <ul>
-                <UsersItemDetail data={this.props.usersItem} />
-                
+                    <CreateEditUser data={this.props.usersItem} /> 
                 </ul>
             </div>
         )

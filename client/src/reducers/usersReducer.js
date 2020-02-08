@@ -20,9 +20,6 @@ export default (state = initialState, action) => {
       updated['usersItem'] = action.usersItem
       return updated
 
-    case constants.USERSITEM_RECEIVED:
-      updated['usersItem'] = action.usersItem;
-      return updated;
 
 
 

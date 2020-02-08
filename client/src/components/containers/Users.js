@@ -11,12 +11,13 @@ class Users extends Component {
     render(){
 
         const usersItems = this.props.users.map( (users, i) => {
-            return ( <li key={i}><UsersItemListing data = {users} /></li> );
+            return ( <div class="container float-left w-25 mb-3" key={i}>
+                        <UsersItemListing data = {users} />
+                    </div> );
         });
 
         return (
             <div>
-                <h2>Users Items</h2>
                 <ul>
                 {(this.props.users.length > 0) ? <ul>{usersItems}</ul> : <div>Sorry we have no users</div>}
                 </ul>
