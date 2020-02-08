@@ -17,7 +17,7 @@ class UsersItemDetail extends Component {
 UsersItemDetail.propTypes = {
 
     data: PropTypes.shape({
-        id: PropTypes.string.isRequired,
+        _id: PropTypes.string.isRequired,
         name: PropTypes.string.isRequired,
         mail: PropTypes.string.isRequired
     })

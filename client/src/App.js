@@ -11,6 +11,7 @@ import Home from './components/layouts/Home';
 import About from './components/layouts/About';
 import store from './stores/store';
 import UsersArticle from './components/containers/UsersArticle';
+import UsersSubmit from './components/containers/UsersSubmit';
 
 class App extends Component {
     render() {
@@ -21,6 +22,7 @@ class App extends Component {
                         <Route exact path="/" component={Home} />
                         <Route path="/about" component={About} />
                         <Route path='/users/:id' component={UsersArticle}/>
+                        <Route path='/submit' component={UsersSubmit}/>
                     </Layout>
                 </BrowserRouter>
             </Provider>

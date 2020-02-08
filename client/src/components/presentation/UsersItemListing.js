@@ -11,7 +11,7 @@ class UsersItemListing extends Component {
             <div>
                 <Card >
                     <Card.Img variant="top" src="resources/bee.jpg" />
-                    <div class="position-absolute float-right"><Link to={`/users/${this.props.data.id}`}><b>Edit</b></Link></div>
+                    <div class="position-absolute float-right"><Link to={`/users/${this.props.data._id}`}><b>Edit</b></Link></div>
                     <button type="button" class="btn btn-primary">view</button>
                     {/* <Card.Img variant="top w-5"  src="resources/edit.png" />
                     <div class="position-absolute float-right">Top Left</div> */}
@@ -19,7 +19,7 @@ class UsersItemListing extends Component {
                         <Card.Title>{this.props.data.name}</Card.Title>
                         <Card.Text>
                             {this.props.data.mail}
-                            <div><Link to={`/users/${this.props.data.id}`}><b>{this.props.data.mail}</b></Link></div> 
+                            <div><Link to={`/users/${this.props.data._id}`}><b>{this.props.data.mail}</b></Link></div> 
                         </Card.Text>
                     </Card.Body>
                 </Card>
@@ -31,7 +31,7 @@ class UsersItemListing extends Component {
 
 UsersItemListing.propTypes = {
     data: PropTypes.shape({
-        id: PropTypes.string.isRequired,
+        _id: PropTypes.string.isRequired,
         name: PropTypes.string.isRequired,
         mail: PropTypes.string.isRequired
         })
