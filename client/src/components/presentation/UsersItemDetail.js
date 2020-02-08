@@ -1,6 +1,5 @@
 import React, { Component} from 'react';
 import PropTypes from 'prop-types';
-import { fetchUsersItem } from '../../actions/actions'
 
 class UsersItemDetail extends Component {
 
@@ -18,6 +17,7 @@ class UsersItemDetail extends Component {
 UsersItemDetail.propTypes = {
 
     data: PropTypes.shape({
+        id: PropTypes.string.isRequired,
         name: PropTypes.string.isRequired,
         mail: PropTypes.string.isRequired
     })

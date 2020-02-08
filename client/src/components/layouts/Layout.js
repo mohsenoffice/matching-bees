@@ -6,12 +6,12 @@ class Layout extends Component {
    return (
        <div>
            <div>
-               <h1 align="center">Matching Bees</h1>
+               <h1 class="text-primary text-center">Matching Bees</h1>
            </div>
            <div>
                { this.props.children }
            </div>
-           <div>
+           <div class="w-100 float-left" >
                 <div align="center"> 
                     <Link to={'/'}>Home </Link>
                    |
