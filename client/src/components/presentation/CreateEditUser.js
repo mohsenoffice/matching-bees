@@ -12,12 +12,12 @@ import "react-datepicker/dist/react-datepicker.css";
 
 class CreateEditUser extends Component {
     state = {
-        startDate: new Date()
+        birthday: new Date()
       };
      
       handleChange = date => {
         this.setState({
-          startDate: date
+            birthday: date
         });
       };
       
@@ -33,25 +33,25 @@ class CreateEditUser extends Component {
                         <Card.Text>
                             <div>
                                 Full name                   
-                                <input type="text" class="" id="name" placeholder={this.props.data.name}/>
+                                <input onChange={this.state.name} type="text" class="" id="name" placeholder={this.props.data.name}/>
                             </div>
                             <div>
                                 Birthday                   
-                                <DatePicker
-                                    selected={this.state.startDate}
+                                <DatePicker id="birthday" 
+                                    selected={this.state.birthday}
                                     onChange={this.handleChange}
                                 />
                             </div>
                             <div>
                                 Address                 
-                                <input type="text" class="" id="name" placeholder={this.props.data.name}/>
+                                <input type="text" class="" id="address" placeholder={this.props.data.name}/>
                             </div>
                             <div>
                                 Email  
-                                <input type="text" class="" id="name" placeholder={this.props.data.name}/>
+                                <input type="text" class="" id="mail" placeholder={this.props.data.name}/>
                             </div>
 
-                            <UserActionButtons />
+                            {/* <UserActionButtons /> */}
                             
                         </Card.Text>
                     </Card.Body>
