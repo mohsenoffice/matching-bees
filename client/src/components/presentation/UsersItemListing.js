@@ -11,15 +11,18 @@ class UsersItemListing extends Component {
             <div>
                 <Card >
                     <Card.Img variant="top" src="resources/bee.jpg" />
-                    <div class="position-absolute float-right"><Link to={`/users/${this.props.data._id}`}><b>Edit</b></Link></div>
-                    <button type="button" class="btn btn-primary">view</button>
+                    <div class="position-absolute w-100 text-right">
+                    <input class="form-check-input w-100 float-left" type="checkbox" value="" id="defaultCheck1"/>
+                        <Link to={`/users/${this.props.data._id}`}><b class="w-100 float-right">Edit</b></Link>
+                        <Link to={`/users/${this.props.data._id}`}><b class="w-100 float-right">View</b></Link>
+                    </div>
+                    <div class="position-absolute  w-100"></div>
                     {/* <Card.Img variant="top w-5"  src="resources/edit.png" />
                     <div class="position-absolute float-right">Top Left</div> */}
                     <Card.Body>
                         <Card.Title>{this.props.data.name}</Card.Title>
                         <Card.Text>
                             {this.props.data.mail}
-                            <div><Link to={`/users/${this.props.data._id}`}><b>{this.props.data.mail}</b></Link></div> 
                         </Card.Text>
                     </Card.Body>
                 </Card>
