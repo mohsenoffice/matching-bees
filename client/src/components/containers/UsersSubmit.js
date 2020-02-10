@@ -46,7 +46,7 @@ class UsersSubmit extends Component {
                     <Card.Img class="img-fluid" alt="Responsive image" variant="top" src="/resources/bee.jpg" />
                     <div class="position-absolute float-right">
                        
-							<input type="file" />
+							<input type="file" name="file"/>
 						
                     </div>
                     {/* <Card.Img variant="top w-5"  src="resources/edit.png" />
