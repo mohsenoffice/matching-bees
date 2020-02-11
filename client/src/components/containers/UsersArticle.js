@@ -1,5 +1,4 @@
 import React, { Component} from 'react';
-import UsersItemDetail from '../presentation/UsersItemDetail';
 import CreateEditUser from '../presentation/CreateEditUser';
 import { connect } from 'react-redux'
 import { fetchUsersItem } from '../../actions/actions'

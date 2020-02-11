@@ -1,5 +1,4 @@
 import React, { Component} from 'react';
-import UsersItemDetail from '../presentation/UsersItemDetail';
 import { connect } from 'react-redux';
 import { submitUser } from '../../actions/actions';
 import { withRouter } from "react-router-dom";

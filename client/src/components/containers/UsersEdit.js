@@ -1,5 +1,4 @@
 import React, { Component} from 'react';
-import UsersItemDetail from '../presentation/UsersItemDetail';
 import { connect } from 'react-redux';
 import { updateUser } from '../../actions/actions';
 import { deleteUser } from '../../actions/actions';
