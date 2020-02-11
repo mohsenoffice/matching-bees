@@ -9,7 +9,8 @@ const UsersSchema = new mongoose.Schema({
         type: Date,
         required: true,
         default: new Date()
-    }      
+    },       
+    img: String
 });
 
 mongoose.model('Users', UsersSchema);

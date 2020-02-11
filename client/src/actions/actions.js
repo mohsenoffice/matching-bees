@@ -14,7 +14,33 @@ function usersReceived(users){
     }
 }
 
+function usersItemSelected(usersItem){
+   // alert(usersItem._id);
+    return {
+        type: actionTypes.USERSITEM_SELECTED,
+        usersItem: usersItem
+    }
+}
 
+function usersItemUnSelected(usersItem){
+    // alert(usersItem._id);
+     return {
+         type: actionTypes.USERSITEM_UN_SELECTED,
+         usersItem: usersItem
+     }
+ }
+
+export function fetchSelectedItem(usersItem, toAdd){
+    if(toAdd){
+        return dispatch => {
+                return dispatch(usersItemSelected(usersItem));
+        }
+    }else{
+        return dispatch => {
+            return dispatch(usersItemUnSelected(usersItem));
+        }
+    }
+}
 
 export function fetchUsers(){
     return dispatch => {
