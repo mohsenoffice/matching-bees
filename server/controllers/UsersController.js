@@ -29,5 +29,27 @@ module.exports = {
             }
             callback(null, result);
         });
+    },
+
+    findByIdAndUpdate: function(params, callback){
+        console.log(params.name);
+        Users.findByIdAndUpdate({_id: params._id}, params, function(err, result){
+            if(err){
+                callback(err, null);
+                return
+            }
+            callback(null, result);
+        });
+    },
+
+    findByIdAndRemove: function(params, callback){
+        console.log(params.name);
+        Users.findByIdAndRemove({_id: params._id}, function(err, result){
+            if(err){
+                callback(err, null);
+                return
+            }
+            callback(null, result);
+        });
     }
 }
