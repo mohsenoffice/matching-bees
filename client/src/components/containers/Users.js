@@ -2,6 +2,7 @@ import React, { Component} from 'react';
 import UsersItemListing from '../presentation/UsersItemListing';
 import { connect } from 'react-redux'
 import { fetchUsers } from '../../actions/actions'
+import ActionButtons from './ActionButtons';
 
 class Users extends Component {
     componentDidMount(){
@@ -18,6 +19,7 @@ class Users extends Component {
 
         return (
             <div>
+                <ActionButtons  />
                 <ul>
                 {(this.props.users.length > 0) ? <ul>{usersItems}</ul> : <div>Sorry we have no users</div>}
                 </ul>
