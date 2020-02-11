@@ -6,6 +6,7 @@ import { submitUser } from '../../actions/actions';
 import { connect } from 'react-redux';
 import { withRouter } from "react-router-dom";
 
+
 class ActionButtons extends Component {
 
   constructor(){
@@ -21,7 +22,7 @@ class ActionButtons extends Component {
 
 
 
-  submitSubmission(){
+  submitRandom(){
     let randomSubmission = Object.assign({}, this.state.random);
     const rand = Math.floor(Math.random() * 100000);
     randomSubmission["name"] = "Mohsen " + rand;
@@ -32,12 +33,61 @@ class ActionButtons extends Component {
     window.location.reload();
   }
 
+  compareSelected(){
+    if(!this.props.selectedUser1._id || !this.props.selectedUser2._id){
+      alert("Please select 2 users to comapre!");
+      return;
+    }
+    var nameScore = this.stringScore(this.props.selectedUser1.name, this.props.selectedUser2.name);
+    var ageScore = Math.abs(this.getAge(this.props.selectedUser1.birthday) - this.getAge(this.props.selectedUser2.birthday))
+    var finalScore = nameScore/(ageScore/10);
+    alert("Final score comapring:\n" + 
+          this.props.selectedUser1.name +  "<-->" + 
+          this.props.selectedUser2.name +"\n ==> " + finalScore);
+  }
+
+   stringScore(st1, st2){
+    let score = 0;
+    let firstMap = this.convertStringToMap(st1.toLowerCase());
+    let secondMap = this.convertStringToMap(st2.toLowerCase());
+    for (let [key, value] of firstMap) {
+      if(secondMap.get(key)){
+        score += value + secondMap.get(key);
+      }
+    }
+    return score;
+  }
+
+  getAge(dateString) {
+    var today = new Date();
+    var birthDate = new Date(dateString);
+    var age = today.getFullYear() - birthDate.getFullYear();
+    var m = today.getMonth() - birthDate.getMonth();
+    if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+        age--;
+    }
+    return age;
+}
+
+  convertStringToMap(str){
+    let strMap = new Map();
+    [...str].forEach(c => {
+      if(c != ' ')
+        if(strMap.get(c)){
+          strMap.set(c, strMap.get(c) +1);
+        }else{
+          strMap.set(c, 1);
+        }
+      });
+    return strMap;
+  }
+
   render(){
     return (
       <div class="text-center m-3">
         <Link to="/add" className="btn btn-success">New</Link>
-        <Button variant="warning mx-1" onClick={this.submitSubmission.bind(this)} >Random</Button>
-        <Button variant="primary mx-1">Compare</Button>
+        <Button variant="warning mx-1" onClick={this.submitRandom.bind(this)} >Random</Button>
+        <Button variant="primary mx-1" onClick={this.compareSelected.bind(this)} >Compare</Button>
     
       </div>
   )}
@@ -45,6 +95,8 @@ class ActionButtons extends Component {
 
 const mapStateToProps = state => {
   return {
+    selectedUser1: state.selectedUser1.selectedUser1,
+    selectedUser2: state.selectedUser1.selectedUser2
   }
 }
 

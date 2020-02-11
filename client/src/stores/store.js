@@ -4,7 +4,9 @@ import usersReducer from '../reducers/usersReducer';
 
 const store = createStore(
   combineReducers({
-    users: usersReducer
+    users: usersReducer,
+    selectedUser1: usersReducer,
+    selectedUser2: usersReducer
   }),
   applyMiddleware(
     thunk

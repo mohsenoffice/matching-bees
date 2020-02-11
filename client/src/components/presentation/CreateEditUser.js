@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import UserActionButtons from '../containers/UserActionButtons';
 import UsersEdit from '../containers/UsersEdit';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card'

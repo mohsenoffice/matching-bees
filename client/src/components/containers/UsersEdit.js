@@ -49,6 +49,11 @@ class UsersEdit extends Component {
     }
 
  
+    fileSelectedHandler = event =>{
+            console.log(event.target.files[0]);
+            this.state.submission.img = event.target.files[0];
+    }
+
 
     render(){
 
@@ -58,7 +63,7 @@ class UsersEdit extends Component {
                     <Card.Img class="img-fluid" alt="Responsive image" variant="top" src="/resources/bee.jpg" />
                     <div class="position-absolute float-right">
                        
-							<input type="file" name="file"/>
+							<input type="file" name="file" onChange={this.fileSelectedHandler}/>
 						
                     </div>
                     {/* <Card.Img variant="top w-5"  src="resources/edit.png" />
@@ -70,8 +75,8 @@ class UsersEdit extends Component {
                                 <input class="form-control w-50" defaultValue={this.props.submission.name} onChange={this.updateSubmission.bind(this)} id="name" type="text" placeholder= "Name" />
                             </div>
                             <div class="m-2">
-                                <span class="float-left mr-2 w-25">Birthday  </span>             
-                                <input class="form-control w-50 border-bottom"  defaultValue={this.props.submission.birthday} onChange={this.updateSubmission.bind(this)} id="birthday" type="date"/>
+                                <span class="float-left mr-2 w-25">Birthday  </span>       
+                                <input class="form-control w-50 border-bottom" data-date-format="DD MM YYYY"  defaultValue={this.props.submission.birthday} onChange={this.updateSubmission.bind(this)} id="birthday" type="date"/>
                             </div>
                             <div class="m-2">
                                 <span class="float-left mr-2 w-25">Address   </span>              

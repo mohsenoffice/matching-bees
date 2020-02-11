@@ -41,6 +41,7 @@ router.get('/:id', function(req, res, next){
 });
 
 router.post('/', function(req, res, next) {
+    console.log(req.body);
     usersController.create(req.body, function(err, result){
         if(err){  
             console.log(err);
