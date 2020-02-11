@@ -47,3 +47,31 @@ export function submitUser(data){
             .catch( (e) => console.log(e) );
     }    
 }
+
+export function updateUser(data){
+    return dispatch => {
+        return fetch('/users/', { 
+            method: 'PUT', 
+             headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+              },
+            body: JSON.stringify(data), 
+            mode: 'cors'})
+            .catch( (e) => console.log(e) );
+    }    
+}
+
+export function deleteUser(data){
+    return dispatch => {
+        return fetch('/users/', { 
+            method: 'DELETE', 
+             headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+              },
+            body: JSON.stringify(data), 
+            mode: 'cors'})
+            .catch( (e) => console.log(e) );
+    }    
+}

@@ -1,13 +1,14 @@
 import React, { Component} from 'react';
 import UsersItemDetail from '../presentation/UsersItemDetail';
 import { connect } from 'react-redux';
-import { submitUser } from '../../actions/actions';
+import { updateUser } from '../../actions/actions';
+import { deleteUser } from '../../actions/actions';
 import { withRouter } from "react-router-dom";
 import { Link } from 'react-router-dom';
 import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button';
 
-class UsersSubmit extends Component {
+class UsersEdit extends Component {
 
     constructor(){
         super();
@@ -15,28 +16,36 @@ class UsersSubmit extends Component {
         this.state = {
             submission:{
             },
-            edit:false
         };
         
         
     }
 
     componentDidMount(){
+        this.state.submission._id = this.props.submission._id
     }
 
     updateSubmission(event){
         let updatedSubmission = Object.assign({}, this.state.submission);
-        //alert(this.props.submission.name);
 
         updatedSubmission[event.target.id] = event.target.value;
-       // alert(updatedSubmission[event.target.id]);
         this.setState({
             submission: updatedSubmission   
         });
+        
     }
 
     submitSubmission(){
-        this.props.dispatch(submitUser(this.state.submission));    
+        this.state.submission._id = this.props.submission._id;
+        this.props.dispatch(updateUser(this.state.submission));  
+        console.log(this.state.submission);  
+        this.props.history.push("/");
+    }
+
+    submitDelete(){
+        this.state.submission._id = this.props.submission._id;
+        this.props.dispatch(deleteUser(this.state.submission));  
+        console.log(this.state.submission);  
         this.props.history.push("/");
     }
 
@@ -46,7 +55,6 @@ class UsersSubmit extends Component {
 
         return (
             <div class="w-50 text-center">
-                <Button variant="success mx-1" onClick={event =>  window.location.href='/'}>back</Button>
                 <Card >
                     <Card.Img class="img-fluid" alt="Responsive image" variant="top" src="/resources/bee.jpg" />
                     <div class="position-absolute float-right">
@@ -60,21 +68,23 @@ class UsersSubmit extends Component {
                         <Card.Text>
                             <div class="m-2">
                                 <span class="float-left mr-2 w-25">Full name  </span>                 
-                                <input class="form-control w-50" onChange={this.updateSubmission.bind(this)} id="name" type="text" placeholder= "Name" />
+                                <input class="form-control w-50" defaultValue={this.props.submission.name} onChange={this.updateSubmission.bind(this)} id="name" type="text" placeholder= "Name" />
                             </div>
                             <div class="m-2">
                                 <span class="float-left mr-2 w-25">Birthday  </span>             
-                                <input class="form-control w-50 border-bottom"  onChange={this.updateSubmission.bind(this)} id="birthday" type="date"/>
+                                <input class="form-control w-50 border-bottom"  defaultValue={this.props.submission.birthday} onChange={this.updateSubmission.bind(this)} id="birthday" type="date"/>
                             </div>
                             <div class="m-2">
                                 <span class="float-left mr-2 w-25">Address   </span>              
-                                <input class="form-control w-50"  onChange={this.updateSubmission.bind(this)} id="address" type="text" placeholder= "address"/>
+                                <input class="form-control w-50"  defaultValue={this.props.submission.address} onChange={this.updateSubmission.bind(this)} id="address" type="text" placeholder= "address"/>
                             </div>
                             <div class="m-2">
                                 <span class="float-left mr-2 w-25">Email  </span>
-                                <input class="form-control w-50"  onChange={this.updateSubmission.bind(this)} id="mail" type="text" placeholder= "Mail"/>
+                                <input class="form-control w-50" defaultValue={this.props.submission.mail}  onChange={this.updateSubmission.bind(this)} id="mail" type="text" placeholder= "Mail"/>
                             </div>
-                            <Button variant="success mx-1"  onClick={this.submitSubmission.bind(this)}>Create</Button>
+                            <Button variant="danger mx-1"  onClick={this.submitDelete.bind(this)}>Delete</Button>
+                            <Button variant="success mx-1"  onClick={this.submitSubmission.bind(this)}>Update</Button>
+                            
                             
                         </Card.Text>
                     </Card.Body>
@@ -89,4 +99,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default withRouter(connect(mapStateToProps)(UsersSubmit));
+export default withRouter(connect(mapStateToProps)(UsersEdit));

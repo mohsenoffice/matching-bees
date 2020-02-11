@@ -58,4 +58,42 @@ router.post('/', function(req, res, next) {
     });
 });
 
+router.put('/', function(req, res, next) {
+    console.log(req.body);
+    usersController.findByIdAndUpdate(req.body, function(err, result){
+        if(err){  
+            console.log(err);
+            res.json({
+                success: 0,
+                error: err
+            })
+            return;
+        }
+
+        res.json({
+            success: 1,
+            data: result
+        });
+    });
+});
+
+
+router.delete('/', function(req, res, next) {
+    usersController.findByIdAndRemove(req.body, function(err, result){
+        if(err){  
+            console.log(err);
+            res.json({
+                success: 0,
+                error: err
+            })
+            return;
+        }
+
+        res.json({
+            success: 1,
+            data: result
+        });
+    });
+});
+
 module.exports = router
