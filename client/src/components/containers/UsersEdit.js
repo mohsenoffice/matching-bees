@@ -50,49 +50,72 @@ class UsersEdit extends Component {
 
  
     fileSelectedHandler = event =>{
-            console.log(event.target.files[0]);
-            this.state.submission.img = event.target.files[0];
+        console.log(event.target.files[0]);
+        this.getBase64(event.target.files[0]).then(base64 => {
+            //localStorage["fileBase64"] = base64;
+            let updatedSubmission = Object.assign({}, this.state.submission);
+            
+            updatedSubmission["img"] = base64;
+                   // alert(updatedSubmission[event.target.id]);
+                this.setState({
+                    submission: updatedSubmission   
+                });
+
+            console.log("file stored",base64);
+          });
+        //this.state.submission.img = event.target.files[0];
     }
+ 
+    getBase64 = (file) => {
+        return new Promise((resolve,reject) => {
+           const reader = new FileReader();
+           reader.onload = () => resolve(reader.result);
+           reader.onerror = error => reject(error);
+           reader.readAsDataURL(file);
+        });
+      }
 
 
     render(){
 
         return (
-            <div class="w-50 text-center">
-                <Card >
-                    <Card.Img class="img-fluid" alt="Responsive image" variant="top" src="/resources/bee.jpg" />
-                    <div class="position-absolute float-right">
-                       
-							<input type="file" name="file" onChange={this.fileSelectedHandler}/>
-						
-                    </div>
-                    {/* <Card.Img variant="top w-5"  src="resources/edit.png" />
-                    <div class="position-absolute float-right">Top Left</div> */}
-                    <Card.Body>
-                        <Card.Text>
-                            <div class="m-2">
-                                <span class="float-left mr-2 w-25">Full name  </span>                 
-                                <input class="form-control w-50" defaultValue={this.props.submission.name} onChange={this.updateSubmission.bind(this)} id="name" type="text" placeholder= "Name" />
-                            </div>
-                            <div class="m-2">
-                                <span class="float-left mr-2 w-25">Birthday  </span>       
-                                <input class="form-control w-50 border-bottom" data-date-format="DD MM YYYY"  defaultValue={this.props.submission.birthday} onChange={this.updateSubmission.bind(this)} id="birthday" type="date"/>
-                            </div>
-                            <div class="m-2">
-                                <span class="float-left mr-2 w-25">Address   </span>              
-                                <input class="form-control w-50"  defaultValue={this.props.submission.address} onChange={this.updateSubmission.bind(this)} id="address" type="text" placeholder= "address"/>
-                            </div>
-                            <div class="m-2">
-                                <span class="float-left mr-2 w-25">Email  </span>
-                                <input class="form-control w-50" defaultValue={this.props.submission.mail}  onChange={this.updateSubmission.bind(this)} id="mail" type="text" placeholder= "Mail"/>
-                            </div>
-                            <Button variant="danger mx-1"  onClick={this.submitDelete.bind(this)}>Delete</Button>
-                            <Button variant="success mx-1"  onClick={this.submitSubmission.bind(this)}>Update</Button>
+            <div class="webkit-center">
+                <div class="w-50">
+                    <Card >
+                        <Card.Img class="img-fluid" alt="Responsive image" variant="top" src="/resources/bee.jpg" />
+                        <div class="position-absolute float-right">
+                        
+                        <input type="file" name="file" onChange={this.fileSelectedHandler}/>
                             
-                            
-                        </Card.Text>
-                    </Card.Body>
-                </Card>
+                        </div>
+                        {/* <Card.Img variant="top w-5"  src="resources/edit.png" />
+                        <div class="position-absolute float-right">Top Left</div> */}
+                        <Card.Body>
+                            <Card.Text>
+                                <div class="m-2">
+                                    <span class="float-left mr-2 w-25">Full name  </span>                 
+                                    <input class="form-control w-50" defaultValue={this.props.submission.name} onChange={this.updateSubmission.bind(this)} id="name" type="text" placeholder= "Name" />
+                                </div>
+                                <div class="m-2">
+                                    <span class="float-left mr-2 w-25">Birthday  </span>       
+                                    <input class="form-control w-50 border-bottom" data-date-format="DD MM YYYY"  defaultValue={this.props.submission.birthday} onChange={this.updateSubmission.bind(this)} id="birthday" type="date"/>
+                                </div>
+                                <div class="m-2">
+                                    <span class="float-left mr-2 w-25">Address   </span>              
+                                    <input class="form-control w-50"  defaultValue={this.props.submission.address} onChange={this.updateSubmission.bind(this)} id="address" type="text" placeholder= "address"/>
+                                </div>
+                                <div class="m-2">
+                                    <span class="float-left mr-2 w-25">Email  </span>
+                                    <input class="form-control w-50" defaultValue={this.props.submission.mail}  onChange={this.updateSubmission.bind(this)} id="mail" type="text" placeholder= "Mail"/>
+                                </div>
+                                <Button variant="danger mx-1"  onClick={this.submitDelete.bind(this)}>Delete</Button>
+                                <Button variant="success mx-1"  onClick={this.submitSubmission.bind(this)}>Update</Button>
+                                
+                                
+                            </Card.Text>
+                        </Card.Body>
+                    </Card>
+                </div>
             </div>
         )
     }

@@ -15,7 +15,7 @@ class UsersArticle extends Component {
     render(){
         return (
             <div>
-               <Button variant="success mx-1" onClick={event =>  window.location.href='/'}>back</Button>
+               <Button variant="secondary mx-1" onClick={event =>  window.location.href='/'}>back</Button>
                 <ul>
                     <CreateEditUser data={this.props.usersItem} /> 
                 </ul>
