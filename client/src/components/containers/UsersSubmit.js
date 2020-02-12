@@ -42,18 +42,15 @@ class UsersSubmit extends Component {
     fileSelectedHandler = event =>{
         console.log(event.target.files[0]);
         this.getBase64(event.target.files[0]).then(base64 => {
-            //localStorage["fileBase64"] = base64;
             let updatedSubmission = Object.assign({}, this.state.submission);
             
             updatedSubmission["img"] = base64;
-                   // alert(updatedSubmission[event.target.id]);
                 this.setState({
                     submission: updatedSubmission   
                 });
 
             console.log("file stored",base64);
           });
-        //this.state.submission.img = event.target.files[0];
     }
  
     getBase64 = (file) => {
@@ -73,14 +70,12 @@ class UsersSubmit extends Component {
                 <div class="webkit-center">
                     <div class="w-50 " >
                         <Card >
-                            <Card.Img class="img-fluid" alt="Responsive" variant="top" src="/resources/bee.jpg" />
+                        <Card.Img variant="top" src={this.state.submission.img? this.state.submission.img : "resources/bee.jpg"} />
                             <div class="position-absolute float-right">
                             
                             <input type="file" name="file" onChange={this.fileSelectedHandler}/>
                                 
                             </div>
-                            {/* <Card.Img variant="top w-5"  src="resources/edit.png" />
-                            <div class="position-absolute float-right">Top Left</div> */}
                             <Card.Body>
                                 <Card.Text>
                                     <div class="m-2">
