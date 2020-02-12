@@ -90,8 +90,8 @@ function DisplayModal(props) {
           </Modal.Header>
           <Modal.Body>
                     <Card >
-                      <Card.Img variant="top" src="resources/bee.jpg" />
                       
+                      <Card.Img variant="top" src={props.props.img? props.props.img : "resources/bee.jpg"} />
                       <div class="position-absolute  w-100"></div>
                       <Card.Body>
                           <Card.Text>
