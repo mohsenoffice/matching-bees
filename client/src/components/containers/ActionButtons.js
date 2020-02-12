@@ -3,6 +3,7 @@ import {Redirect} from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import { Link } from 'react-router-dom';
 import { submitUser } from '../../actions/actions';
+import { fetchUsers } from '../../actions/actions';
 import { connect } from 'react-redux';
 import { withRouter } from "react-router-dom";
 
@@ -18,9 +19,6 @@ class ActionButtons extends Component {
     };
   }
 
- 
-
-
 
   submitRandom(){
     let randomSubmission = Object.assign({}, this.state.random);
@@ -29,8 +27,10 @@ class ActionButtons extends Component {
     randomSubmission["mail"] = "mohsen"+ rand +"@gmail.com";
     randomSubmission["address"] = "Massada "+rand;
     randomSubmission["birthday"] = new Date(+(new Date()) - Math.floor(Math.random()*100000000000));
-    this.props.dispatch(submitUser(randomSubmission));    
+    this.props.dispatch(submitUser(randomSubmission));  
+    this.props.dispatch(fetchUsers()); 
     window.location.reload();
+
   }
 
   compareSelected(){

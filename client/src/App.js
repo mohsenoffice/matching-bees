@@ -13,6 +13,8 @@ import store from './stores/store';
 import UsersArticle from './components/containers/UsersArticle';
 import UsersSubmit from './components/containers/UsersSubmit';
 import CreateUser from './components/containers/CreateUser';
+import ReactNotification from 'react-notifications-component'
+import 'react-notifications-component/dist/theme.css'
 
 class App extends Component {
     render() {
@@ -20,6 +22,7 @@ class App extends Component {
             <Provider store={store}>
                 <BrowserRouter>
                     <Layout>
+                        <ReactNotification />
                         <Route exact path="/" component={Home} />
                         <Route path="/about" component={About} />
                         <Route path='/users/:id' component={UsersArticle}/>

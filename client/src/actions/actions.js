@@ -1,4 +1,5 @@
 import actionTypes from '../constants/actionTypes';
+import { store } from 'react-notifications-component';
 
 function usersItemReceived(usersItem){
     return {
@@ -15,7 +16,6 @@ function usersReceived(users){
 }
 
 function usersItemSelected(usersItem){
-   // alert(usersItem._id);
     return {
         type: actionTypes.USERSITEM_SELECTED,
         usersItem: usersItem
@@ -23,7 +23,6 @@ function usersItemSelected(usersItem){
 }
 
 function usersItemUnSelected(usersItem){
-    // alert(usersItem._id);
      return {
          type: actionTypes.USERSITEM_UN_SELECTED,
          usersItem: usersItem
@@ -47,7 +46,7 @@ export function fetchUsers(){
         return fetch(`/users`)
         .then( (response) => response.json() )
         .then( (data) => dispatch(usersReceived(data.data)))
-        .catch( (e) => console.log(e) );
+        .catch( (e) => showNotification("Failed to get users! Please check server connectivity.", false) );
     }
 }
 
@@ -56,7 +55,7 @@ export function fetchUsersItem(id){
         return fetch(`/users/${id}`)
         .then( (response) => response.json() )
         .then( (data) => dispatch(usersItemReceived(data.data)))
-        .catch( (e) => console.log(e) );
+        .catch( (e) => showNotification("Failed to get a user!", false));
     }
 }
 
@@ -70,7 +69,8 @@ export function submitUser(data){
               },
             body: JSON.stringify(data), 
             mode: 'cors'})
-            .catch( (e) => console.log(e) );
+            .then((response) => showNotification(response.statusText, response.ok))
+            .catch( (e) => showNotification("Failed to add user! Please check server connectivity.", false) );
     }    
 }
 
@@ -84,7 +84,8 @@ export function updateUser(data){
               },
             body: JSON.stringify(data), 
             mode: 'cors'})
-            .catch( (e) => console.log(e) );
+            .then((response) => showNotification(response.statusText, response.ok))
+            .catch( (e) => showNotification("Failed to update users! Please check server connectivity.", false) );
     }    
 }
 
@@ -98,6 +99,24 @@ export function deleteUser(data){
               },
             body: JSON.stringify(data), 
             mode: 'cors'})
-            .catch( (e) => console.log(e) );
+            .then((response) => showNotification(response.statusText, response.ok))
+            .catch( (e) => showNotification("Failed to delete users! Please check server connectivity.", false) );
     }    
+}
+
+function showNotification(message, isSucess){
+    store.addNotification({
+        title: isSucess ? "Wonderful!":"Oh!",
+        message: message,
+        type: isSucess ? "success":"danger",
+        insert: "top",
+        container: "top-right",
+        animationIn: ["animated", "fadeIn"],
+        animationOut: ["animated", "fadeOut"],
+        dismiss: {
+          duration: 5000,
+          onScreen: true
+        }
+      });
+
 }

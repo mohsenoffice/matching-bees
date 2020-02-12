@@ -34,13 +34,11 @@ class UsersSubmit extends Component {
     }
 
     submitSubmission(){
-        console.log(this.state.submission);
-        this.props.dispatch(submitUser(this.state.submission));    
+        this.props.dispatch(submitUser(this.state.submission));
         this.props.history.push("/");
     }
 
     fileSelectedHandler = event =>{
-        console.log(event.target.files[0]);
         this.getBase64(event.target.files[0]).then(base64 => {
             let updatedSubmission = Object.assign({}, this.state.submission);
             
@@ -48,8 +46,6 @@ class UsersSubmit extends Component {
                 this.setState({
                     submission: updatedSubmission   
                 });
-
-            console.log("file stored",base64);
           });
     }
  

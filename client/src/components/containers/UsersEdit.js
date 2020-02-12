@@ -37,26 +37,21 @@ class UsersEdit extends Component {
     submitSubmission(){
         this.state.submission._id = this.props.submission._id;
         this.props.dispatch(updateUser(this.state.submission));  
-        console.log(this.state.submission);  
         this.props.history.push("/");
     }
 
     submitDelete(){
         this.state.submission._id = this.props.submission._id;
         this.props.dispatch(deleteUser(this.state.submission));  
-        console.log(this.state.submission);  
         this.props.history.push("/");
     }
 
  
     fileSelectedHandler = event =>{
-        console.log(event.target.files[0]);
         this.getBase64(event.target.files[0]).then(base64 => {
-            //localStorage["fileBase64"] = base64;
             let updatedSubmission = Object.assign({}, this.state.submission);
             
             updatedSubmission["img"] = base64;
-                   // alert(updatedSubmission[event.target.id]);
                 this.setState({
                     submission: updatedSubmission   
                 });
