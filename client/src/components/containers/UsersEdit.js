@@ -60,10 +60,7 @@ class UsersEdit extends Component {
                 this.setState({
                     submission: updatedSubmission   
                 });
-
-            console.log("file stored",base64);
           });
-        //this.state.submission.img = event.target.files[0];
     }
  
     getBase64 = (file) => {
@@ -82,7 +79,7 @@ class UsersEdit extends Component {
             <div class="webkit-center">
                 <div class="w-50">
                     <Card >
-                        <Card.Img class="img-fluid" alt="Responsive image" variant="top" src="/resources/bee.jpg" />
+                    <Card.Img variant="top" src={this.state.submission.img ? this.state.submission.img : "/resources/bee.jpg"} />
                         <div class="position-absolute float-right">
                         
                         <input type="file" name="file" onChange={this.fileSelectedHandler}/>

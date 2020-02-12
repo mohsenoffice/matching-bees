@@ -36,7 +36,8 @@ class UsersItemListing extends Component {
         return (
             <div>
                 <Card >
-                    <Card.Img variant="top" src="resources/bee.jpg" />
+                    {/* <Card.Img variant="top" src="resources/bee.jpg" /> */}
+                    <Card.Img variant="top" src={this.props.data.img? this.props.data.img : "resources/bee.jpg"} />
                     <div class="position-absolute w-100 text-right">
                     <input class="form-check-input w-100 float-left" onChange={this.handleChecked.bind(this)} type="checkbox" value="" id={this.props.data._id}/>
 
