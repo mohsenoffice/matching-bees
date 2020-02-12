@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { updateUser } from '../../actions/actions';
 import { deleteUser } from '../../actions/actions';
 import { withRouter } from "react-router-dom";
-import { Link } from 'react-router-dom';
 import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button';
 
@@ -16,8 +15,6 @@ class UsersEdit extends Component {
             submission:{
             },
         };
-        
-        
     }
 
     componentDidMount(){
@@ -71,34 +68,32 @@ class UsersEdit extends Component {
     render(){
 
         return (
-            <div class="webkit-center">
-                <div class="w-50">
+            <div className="webkit-center">
+                <div className="w-50">
                     <Card >
                     <Card.Img variant="top" src={this.state.submission.img ? this.state.submission.img : "/resources/bee.jpg"} />
-                        <div class="position-absolute float-right">
+                        <div className="position-absolute float-right">
                         
                         <input type="file" name="file" onChange={this.fileSelectedHandler}/>
                             
                         </div>
-                        {/* <Card.Img variant="top w-5"  src="resources/edit.png" />
-                        <div class="position-absolute float-right">Top Left</div> */}
                         <Card.Body>
                             <Card.Text>
-                                <div class="m-2">
-                                    <span class="float-left mr-2 w-25">Full name  </span>                 
-                                    <input class="form-control w-50" defaultValue={this.props.submission.name} onChange={this.updateSubmission.bind(this)} id="name" type="text" placeholder= "Name" />
+                                <div className="m-2">
+                                    <span className="float-left mr-2 w-25">Full name  </span>                 
+                                    <input className="form-control w-50" defaultValue={this.props.submission.name} onChange={this.updateSubmission.bind(this)} id="name" type="text" placeholder= "Name" />
                                 </div>
-                                <div class="m-2">
-                                    <span class="float-left mr-2 w-25">Birthday  </span>       
-                                    <input class="form-control w-50 border-bottom" data-date-format="DD MM YYYY"  defaultValue={this.props.submission.birthday} onChange={this.updateSubmission.bind(this)} id="birthday" type="date"/>
+                                <div className="m-2">
+                                    <span className="float-left mr-2 w-25">Birthday  </span>       
+                                    <input className="form-control w-50 border-bottom" data-date-format="DD MM YYYY"  defaultValue={this.props.submission.birthday} onChange={this.updateSubmission.bind(this)} id="birthday" type="date"/>
                                 </div>
-                                <div class="m-2">
-                                    <span class="float-left mr-2 w-25">Address   </span>              
-                                    <input class="form-control w-50"  defaultValue={this.props.submission.address} onChange={this.updateSubmission.bind(this)} id="address" type="text" placeholder= "address"/>
+                                <div className="m-2">
+                                    <span className="float-left mr-2 w-25">Address   </span>              
+                                    <input className="form-control w-50"  defaultValue={this.props.submission.address} onChange={this.updateSubmission.bind(this)} id="address" type="text" placeholder= "address"/>
                                 </div>
-                                <div class="m-2">
-                                    <span class="float-left mr-2 w-25">Email  </span>
-                                    <input class="form-control w-50" defaultValue={this.props.submission.mail}  onChange={this.updateSubmission.bind(this)} id="mail" type="text" placeholder= "Mail"/>
+                                <div className="m-2">
+                                    <span className="float-left mr-2 w-25">Email  </span>
+                                    <input className="form-control w-50" defaultValue={this.props.submission.mail}  onChange={this.updateSubmission.bind(this)} id="mail" type="text" placeholder= "Mail"/>
                                 </div>
                                 <Button variant="danger mx-1"  onClick={this.submitDelete.bind(this)}>Delete</Button>
                                 <Button variant="success mx-1"  onClick={this.submitSubmission.bind(this)}>Update</Button>
