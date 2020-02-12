@@ -31,6 +31,9 @@
 .webkit-center{
   text-align: -webkit-center;
 }
+.img-height{
+  height: 185px;
+}
 
 @keyframes App-logo-spin {
   from {

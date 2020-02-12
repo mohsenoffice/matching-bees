@@ -5,11 +5,7 @@ import Button from 'react-bootstrap/Button';
 import { connect } from 'react-redux'
 import Card from 'react-bootstrap/Card'
 import Modal from 'react-bootstrap/Modal'
-import ModalDialog from 'react-bootstrap/ModalDialog'
 import { fetchSelectedItem } from '../../actions/actions';
-import { removeSelectedItem } from '../../actions/actions';
-
-
 
 class UsersItemListing extends Component {
 
@@ -20,7 +16,7 @@ class UsersItemListing extends Component {
     handleChecked(){
         this.setState({isChecked: !this.state.isChecked});
        
-        if(this.state.isChecked == false){
+        if(this.state.isChecked === false){
             if(this.props.selectedUser1._id && this.props.selectedUser2._id){
                 alert("You can select only 2 users!");
                 document.getElementById(this.props.data._id).checked = false;
@@ -36,15 +32,14 @@ class UsersItemListing extends Component {
         return (
             <div>
                 <Card >
-                    {/* <Card.Img variant="top" src="resources/bee.jpg" /> */}
-                    <Card.Img variant="top" src={this.props.data.img? this.props.data.img : "resources/bee.jpg"} />
-                    <div class="position-absolute w-100 text-right">
-                    <input class="form-check-input w-100 float-left" onChange={this.handleChecked.bind(this)} type="checkbox" value="" id={this.props.data._id}/>
+                    <Card.Img variant="top"  className="img-height" src={this.props.data.img? this.props.data.img : "resources/bee.jpg"} />
+                    <div className="position-absolute w-100 text-right">
+                    <input className="form-check-input w-100 float-left" onChange={this.handleChecked.bind(this)} type="checkbox" value="" id={this.props.data._id}/>
 
-                        <Link to={`/users/${this.props.data._id}`}><b class="w-100 float-right">Edit</b></Link>
+                        <Link to={`/users/${this.props.data._id}`}><b className="w-100 float-right">Edit</b></Link>
                         <DisplayModal props={this.props.data} />
                     </div>
-                    <div class="position-absolute  w-100"></div>
+                    <div className="position-absolute  w-100"></div>
                     <Card.Body>
                         <Card.Title>{this.props.data.name}</Card.Title>
                         <Card.Text>
@@ -92,13 +87,13 @@ function DisplayModal(props) {
                     <Card >
                       
                       <Card.Img variant="top" src={props.props.img? props.props.img : "resources/bee.jpg"} />
-                      <div class="position-absolute  w-100"></div>
+                      <div className="position-absolute  w-100"></div>
                       <Card.Body>
                           <Card.Text>
-                              <div>Full Name: {props.props.name} </div> 
-                              <div>Birthday: {props.props.birthday} </div> 
-                              <div>Email: {props.props.mail} </div> 
-                              <div>Address: {props.props.address} </div> 
+                              <span>Full Name: {props.props.name} </span> <br/>
+                              <span>Birthday: {props.props.birthday} </span>  <br/>
+                              <span>Email: {props.props.mail} </span>  <br/>
+                              <span>Address: {props.props.address} </span>  <br/>
                           </Card.Text>
                       </Card.Body>
                   </Card>

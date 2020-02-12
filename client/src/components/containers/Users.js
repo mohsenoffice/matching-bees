@@ -12,7 +12,7 @@ class Users extends Component {
     render(){
 
         const usersItems = this.props.users.map( (users, i) => {
-            return ( <div class="container float-left w-25 mb-3" key={i}>
+            return ( <div className="container float-left w-25 mb-3" key={i}>
                         <UsersItemListing data = {users} />
                     </div> );
         });

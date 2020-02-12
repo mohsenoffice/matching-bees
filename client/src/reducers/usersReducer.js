@@ -31,10 +31,10 @@ export default (state = initialState, action) => {
       return updated
 
       case constants.USERSITEM_UN_SELECTED:
-      if(state.selectedUser1._id == action.usersItem._id){
+      if(state.selectedUser1._id === action.usersItem._id){
         updated['selectedUser1'] = {};
       }
-      if(state.selectedUser2._id == action.usersItem._id){
+      if(state.selectedUser2._id === action.usersItem._id){
         updated['selectedUser2'] = {};
       }
       return updated

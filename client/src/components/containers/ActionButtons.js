@@ -1,5 +1,4 @@
 import React, { Component} from 'react';
-import {Redirect} from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import { Link } from 'react-router-dom';
 import { submitUser } from '../../actions/actions';
@@ -72,7 +71,7 @@ class ActionButtons extends Component {
   convertStringToMap(str){
     let strMap = new Map();
     [...str].forEach(c => {
-      if(c != ' ')
+      if(c !== ' ')
         if(strMap.get(c)){
           strMap.set(c, strMap.get(c) +1);
         }else{
@@ -84,7 +83,7 @@ class ActionButtons extends Component {
 
   render(){
     return (
-      <div class="text-center m-3">
+      <div className="text-center m-3">
         <Link to="/add" className="btn btn-success">New</Link>
         <Button variant="warning mx-1" onClick={this.submitRandom.bind(this)} >Random</Button>
         <Button variant="primary mx-1" onClick={this.compareSelected.bind(this)} >Compare</Button>
